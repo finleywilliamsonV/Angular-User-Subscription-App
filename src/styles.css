@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+.password-visibility-toggle {
+    cursor: pointer;
+}
+
+*, *:focus, *:hover {
+    outline: none !important;
+}
+
+#passwordRequirements > li {
+    list-style-type: none;
+}
