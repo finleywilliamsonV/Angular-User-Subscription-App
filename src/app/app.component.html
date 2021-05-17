@@ -56,10 +56,22 @@
                     <label for="password">Password:</label>
                     
                     <ul id="passwordRequirements">
-                        <li>At least 6 Characters</li>
-                        <li>At least 1 Number</li>
-                        <li>At least 1 Special Character</li>
-                        <li>No repeating Numbers</li>
+                        <li
+                            [class]="!password.value || password.errors?.minlength ? 'passwordError' : 'passwordSuccess'">
+                            At least 6 characters
+                        </li>
+                        <li
+                            [class]="password.errors?.numberNotFound ? 'passwordError' : 'passwordSuccess'">
+                            At least 1 number
+                        </li>
+                        <li
+                            [class]="password.errors?.specialCharacterNotFound ? 'passwordError' : 'passwordSuccess'">
+                            At least 1 special character
+                        </li>
+                        <li
+                            [class]="password.errors?.repeatingNumbersFound ? 'passwordError' : 'passwordSuccess'">
+                            No repeating numbers (4 or more)
+                        </li>
                     </ul>
 
                     <div class="input-group">
@@ -67,8 +79,12 @@
                             id="password"
                             class="form-control"
                             name="password"
-                            required
                             [type]="showPassword ? 'text' : 'password'"
+                            required
+                            minlength="6"
+                            requireNumber
+                            requireSpecialCharacter
+                            requireNoRepeatingNumbers
                             #password="ngModel"
                             ngModel>
                         <span class="input-group-btn">
@@ -76,7 +92,7 @@
                                 class="btn btn-info password-visibility-toggle"
                                 (click)="showPassword = !showPassword"
                                 [title]="showPassword ? 'Hide Password' : 'Show Password'"
-                                [disabled]="!password.viewModel"
+                                [disabled]="!password.value"
                                 type="button"> 
                                 <i class="far fa-eye-slash"></i>
                             </button>
@@ -88,12 +104,19 @@
                 <div class="form-group">
                     <label for="password">Confirm Password:</label>
 
+                    <ul
+                        id="passwordRequirements"
+                        *ngIf="passwordConfirmation.errors?.doesNotMatch">
+                        <li class="passwordError">Passwords must match</li>
+                    </ul>
+
                     <div class="input-group">
                         <input
                             id="passwordConfirmation"
                             class="form-control"
                             name="passwordConfirmation"
                             required
+                            requireMatch="{{password.value}}"
                             [type]="showPassword ? 'text' : 'password'"
                             #passwordConfirmation="ngModel"
                             ngModel>
@@ -102,7 +125,7 @@
                                 class="btn btn-info password-visibility-toggle"
                                 (click)="showPassword = !showPassword"
                                 [title]="showPassword ? 'Hide Password' : 'Show Password'"
-                                [disabled]="!password.viewModel"
+                                [disabled]="!password.value"
                                 type="button">
                                 <i class="far fa-eye-slash"></i>
                             </button>
@@ -110,9 +133,8 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-
-                </div>
+                {{log(passwordConfirmation.errors)}}
+                {{log(form)}}
                   
                 <div class="form-group">
 

@@ -11,3 +11,11 @@
 #passwordRequirements > li {
     list-style-type: none;
 }
+
+.passwordError {
+    color: red;
+}
+
+.passwordSuccess {
+    color: green
+}

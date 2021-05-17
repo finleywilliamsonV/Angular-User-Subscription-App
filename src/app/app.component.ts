@@ -49,4 +49,8 @@ export class AppComponent implements OnInit {
             passwordConfirmation: 'bingus2'
         })
     }
+
+    public log(o :any) {
+        console.log('o:', o)
+    }
 }
