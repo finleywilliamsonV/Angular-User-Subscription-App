@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
      */
     public ngOnInit() {
         this.subscriptionLevels = ['Basic', 'Advanced', 'Pro']
-        this.showPassword = false
+        this.showPassword = true
     }
 
     /**
@@ -42,11 +42,9 @@ export class AppComponent implements OnInit {
      * Fills the form with test data
      */
     public fillForm() {
-        this.signupForm.setValue(<SubscriptionData>{
+        this.signupForm.form.patchValue(<Partial<SubscriptionData>>{
             email: 'finley.williamson@gmail.com',
-            subscriptionLevel: 'Basic',
-            password: 'bingus',
-            passwordConfirmation: 'bingus2'
+            subscriptionLevel: 'Basic'
         })
     }
 

@@ -2,7 +2,7 @@ import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { RequireMatchDirective } from './shared/require-match.directive';
+import { RequirePasswordMatchDirective } from './shared/require-password-match.directive';
 import { RequireNoRepeatingNumbersDirective } from './shared/require-no-repeating-numbers.directive';
 import { RequireNumberDirective } from './shared/require-number.directive';
 import { RequireSpecialCharacterDirective } from './shared/require-special-character.directive';
@@ -13,7 +13,7 @@ import { RequireSpecialCharacterDirective } from './shared/require-special-chara
         RequireNumberDirective,
         RequireSpecialCharacterDirective,
         RequireNoRepeatingNumbersDirective,
-        RequireMatchDirective
+        RequirePasswordMatchDirective
     ],
     imports: [
         BrowserModule,

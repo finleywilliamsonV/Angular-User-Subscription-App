@@ -4,6 +4,7 @@
 
 		<form
 			(ngSubmit)="onSubmit()"
+            [requirePasswordMatch]="[password, passwordConfirmation]"
 			#form="ngForm">
 
 			<div
@@ -76,12 +77,14 @@
 									#password="ngModel"
 									ngModel>
 								<span class="input-group-btn">
-                                    																																													<button
+                                    
+                                    <button
 										class="btn btn-info password-visibility-toggle"
 										(click)="showPassword = !showPassword"
 										[title]="showPassword ? 'Hide Password' : 'Show Password'"
 										[disabled]="!password.value"
-										type="button">										<i class="far fa-eye-slash"></i>
+										type="button">
+                                        <i class="far fa-eye-slash"></i>
 									</button>
                                 </span>
 							</div>
@@ -103,17 +106,17 @@
 									class="form-control"
 									name="passwordConfirmation"
 									required
-									requireMatch="{{password.value}}"
 									[type]="showPassword ? 'text' : 'password'"
 									#passwordConfirmation="ngModel"
 									ngModel>
 								<span class="input-group-btn">
-                                    																																													<button
+                                    <button
 										class="btn btn-info password-visibility-toggle"
 										(click)="showPassword = !showPassword"
 										[title]="showPassword ? 'Hide Password' : 'Show Password'"
 										[disabled]="!password.value"
-										type="button">										<i class="far fa-eye-slash"></i>
+										type="button">
+                                            <i class="far fa-eye-slash"></i>
 									</button>
                                 </span>
 							</div>
