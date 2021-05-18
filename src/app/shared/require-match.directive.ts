@@ -1,5 +1,5 @@
 import { Directive, Input } from '@angular/core'
-import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn } from '@angular/forms'
+import { AbstractControl, NG_VALIDATORS, ValidationErrors, Validator, ValidatorFn, Validators } from '@angular/forms'
 
 @Directive({
     selector: '[requireMatch]',
@@ -20,6 +20,7 @@ export class RequireMatchDirective implements Validator {
 }
 
 const requireMatchValidator = (matchString: string): ValidatorFn => {
+    Validators.nullValidator
     return (control: AbstractControl): { [key: string]: any } | null => {
         if (!matchString) {
             return null

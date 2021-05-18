@@ -1,165 +1,167 @@
 <div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-            <!-- Add a Form with the following Inputs (and Validators)
-                1) Mail address (should not be empty and should be an email address)
-                2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")
-                    Set "Advanced" as Default
-                3) A Password field (should not be empty)
-                4) A Submit Button
 
-                Display a warning message if the Form is invalid AND was touched. Display a warning message below each input if it's invalid.
+	<div class="row">
 
-                Upon submitting the form, you should simply print the Value of the Form to the Console.
-                Optionally, display it in your template.
-            -->
+		<form
+			(ngSubmit)="onSubmit()"
+			#form="ngForm">
 
-            <h3>
-                DingoMax Subscription Form
-            </h3>
+			<div
+				id="formColumn"
+				class="col-xs-12 col-sm-10 col-md-8 mt-5">
 
-            <form
-                (ngSubmit)="onSubmit()"
-                #form="ngForm">
+				<div class="panel panel-primary">
 
-                <div class="form-group">
-                    <label for="emailInput">Email:</label>
-                    <input
-                        id="emailInput"
-                        class="form-control"
-                        name="email"
-                        type="text"
-                        placeholder="example@123.com"
-                        required
-                        email
-                        ngModel>
-                </div>
+					<div class="panel-heading">
+						<h3 class="panel-title">DingoMax Subscription</h3>
+					</div>
 
-                <div class="form-group">
-                    <label for="subscriptionLevel">Subscription Level:</label>
-                    <select
-                        id="subscriptionLevelSelect"
-                        class="form-control"
-                        name="subscriptionLevel"
-                        required
-                        [(ngModel)]="subscriptionLevels[0]">
-                        <option
-                            *ngFor="let level of subscriptionLevels"
-                            value="{{level}}">
-                            {{ level }}
-                        </option>
-    
-                    </select>
-                </div>
+					<div class="panel-body">
 
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    
-                    <ul id="passwordRequirements">
-                        <li
-                            [class]="!password.value || password.errors?.minlength ? 'passwordError' : 'passwordSuccess'">
-                            At least 6 characters
-                        </li>
-                        <li
-                            [class]="password.errors?.numberNotFound ? 'passwordError' : 'passwordSuccess'">
-                            At least 1 number
-                        </li>
-                        <li
-                            [class]="password.errors?.specialCharacterNotFound ? 'passwordError' : 'passwordSuccess'">
-                            At least 1 special character
-                        </li>
-                        <li
-                            [class]="password.errors?.repeatingNumbersFound ? 'passwordError' : 'passwordSuccess'">
-                            No repeating numbers (4 or more)
-                        </li>
-                    </ul>
+						<div class="form-group">
+							<label for="emailInput">Email:</label>
+							<input
+								id="emailInput"
+								class="form-control"
+								name="email"
+								type="text"
+								placeholder="example@123.com"
+								required
+								email
+								ngModel>
+						</div>
 
-                    <div class="input-group">
-                        <input
-                            id="password"
-                            class="form-control"
-                            name="password"
-                            [type]="showPassword ? 'text' : 'password'"
-                            required
-                            minlength="6"
-                            requireNumber
-                            requireSpecialCharacter
-                            requireNoRepeatingNumbers
-                            #password="ngModel"
-                            ngModel>
-                        <span class="input-group-btn">
-                            <button
-                                class="btn btn-info password-visibility-toggle"
-                                (click)="showPassword = !showPassword"
-                                [title]="showPassword ? 'Hide Password' : 'Show Password'"
-                                [disabled]="!password.value"
-                                type="button"> 
-                                <i class="far fa-eye-slash"></i>
-                            </button>
-                        </span>
-                    </div>
+						<div class="form-group">
+							<label for="subscriptionLevel">Subscription Level:</label>
+							<select
+								id="subscriptionLevelSelect"
+								class="form-control"
+								name="subscriptionLevel"
+								required
+								[(ngModel)]="subscriptionLevels[0]">
+								<option
+									*ngFor="let level of subscriptionLevels"
+									value="{{level}}">
+									{{ level }}
+								</option>
 
-                </div>
+							</select>
+						</div>
 
-                <div class="form-group">
-                    <label for="password">Confirm Password:</label>
+						<div class="form-group">
+							<label for="password">Password:</label>
 
-                    <ul
-                        id="passwordRequirements"
-                        *ngIf="passwordConfirmation.errors?.doesNotMatch">
-                        <li class="passwordError">Passwords must match</li>
-                    </ul>
+							<ul id="passwordRequirements">
+								<li [class]="!password.value || password.errors?.minlength ? 'passwordError' : 'passwordSuccess'">
+                                    At least 6 characters</li>
+								<li [class]="password.errors?.numberNotFound ? 'passwordError' : 'passwordSuccess'">At
+                                    least 1 number</li>
+								<li [class]="password.errors?.specialCharacterNotFound ? 'passwordError' : 'passwordSuccess'">
+                                    At least 1 special character</li>
+								<li [class]="password.errors?.repeatingNumbersFound ? 'passwordError' : 'passwordSuccess'">
+                                    No repeating numbers (4 or more)</li>
+							</ul>
 
-                    <div class="input-group">
-                        <input
-                            id="passwordConfirmation"
-                            class="form-control"
-                            name="passwordConfirmation"
-                            required
-                            requireMatch="{{password.value}}"
-                            [type]="showPassword ? 'text' : 'password'"
-                            #passwordConfirmation="ngModel"
-                            ngModel>
-                        <span class="input-group-btn">
-                            <button
-                                class="btn btn-info password-visibility-toggle"
-                                (click)="showPassword = !showPassword"
-                                [title]="showPassword ? 'Hide Password' : 'Show Password'"
-                                [disabled]="!password.value"
-                                type="button">
-                                <i class="far fa-eye-slash"></i>
-                            </button>
-                        </span>
-                    </div>
-                </div>
+							<div class="input-group">
+								<input
+									id="password"
+									class="form-control"
+									name="password"
+									[type]="showPassword ? 'text' : 'password'"
+									required
+									minlength="6"
+									requireNumber
+									requireSpecialCharacter
+									requireNoRepeatingNumbers
+									#password="ngModel"
+									ngModel>
+								<span class="input-group-btn">
+                                    																																													<button
+										class="btn btn-info password-visibility-toggle"
+										(click)="showPassword = !showPassword"
+										[title]="showPassword ? 'Hide Password' : 'Show Password'"
+										[disabled]="!password.value"
+										type="button">										<i class="far fa-eye-slash"></i>
+									</button>
+                                </span>
+							</div>
 
-                {{log(passwordConfirmation.errors)}}
-                {{log(form)}}
-                  
-                <div class="form-group">
+						</div>
 
-                    <button 
-                        class="btn btn-success"  
-                        type="submit"
-                        [disabled]="!form.valid">
-                        Submit
-                    </button>
+						<div class="form-group">
+							<label for="password">Confirm Password:</label>
 
-                </div>
+							<ul
+								id="passwordRequirements"
+								*ngIf="passwordConfirmation.errors?.doesNotMatch">
+								<li class="passwordError">Passwords must match</li>
+							</ul>
 
-                <div class="form-group">
+							<div class="input-group">
+								<input
+									id="passwordConfirmation"
+									class="form-control"
+									name="passwordConfirmation"
+									required
+									requireMatch="{{password.value}}"
+									[type]="showPassword ? 'text' : 'password'"
+									#passwordConfirmation="ngModel"
+									ngModel>
+								<span class="input-group-btn">
+                                    																																													<button
+										class="btn btn-info password-visibility-toggle"
+										(click)="showPassword = !showPassword"
+										[title]="showPassword ? 'Hide Password' : 'Show Password'"
+										[disabled]="!password.value"
+										type="button">										<i class="far fa-eye-slash"></i>
+									</button>
+                                </span>
+							</div>
+						</div>
 
-                    <button 
-                        class="btn btn-primary"  
-                        type="button"
-                        (click)="fillForm()">
-                        Fill Form
-                    </button>
-                    
-                </div>
+						<div class="panel-footer">
+							<!-- <div class="form-group"> -->
 
-            </form>
+							<div class="text-right">
 
-        </div>
-    </div>
+								<button
+									class="btn btn-success"
+									type="submit"
+									[disabled]="!form.valid">
+									Submit
+								</button>
+
+								<button
+									class="btn btn-primary"
+									type="button"
+									(click)="fillForm()">
+									Fill Form
+								</button>
+
+							</div>
+
+							<!-- </div> -->
+						</div>
+
+					</div>
+				</div>
+
+				<!-- End Form Column -->
+			</div>
+
+			<div
+				id="infoColumn"
+				class="col-xs-12 col-sm-10 col-md-4 mt-5">
+
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">Order Summary</h3>
+					</div>
+					<div class="panel-body">Basic panel example</div>
+				</div>
+
+			</div>
+
+		</form>
+	</div>
 </div>
