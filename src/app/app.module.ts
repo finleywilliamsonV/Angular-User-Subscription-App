@@ -8,6 +8,7 @@ import { RequireNumberDirective } from './shared/require-number.directive';
 import { RequireSpecialCharacterDirective } from './shared/require-special-character.directive';
 import { XOrCheckComponent } from './shared/x-or-check/x-or-check.component';
 import { PasswordReqLiComponent } from './shared/password-req-li/password-req-li.component';
+import { UserSubscriptionDisplayComponent } from './shared/user-subscription-display/user-subscription-display.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +18,8 @@ import { PasswordReqLiComponent } from './shared/password-req-li/password-req-li
         RequireNoRepeatingNumbersDirective,
         RequirePasswordMatchDirective,
         XOrCheckComponent,
-        PasswordReqLiComponent
+        PasswordReqLiComponent,
+        UserSubscriptionDisplayComponent
     ],
     imports: [
         BrowserModule,

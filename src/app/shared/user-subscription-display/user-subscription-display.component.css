@@ -1,0 +1,23 @@
+#subscriptionDisplay {
+    font-weight: bold;
+}
+
+.basic {
+    color: blue
+}
+
+.advanced {
+    color: rgb(103, 0, 177)
+}
+
+.pro {
+    color: #b50000
+}
+
+#dateDisplay {
+    font-style: italic;
+}
+
+.subscriptionMargin {
+    margin-top: 6.8px
+}

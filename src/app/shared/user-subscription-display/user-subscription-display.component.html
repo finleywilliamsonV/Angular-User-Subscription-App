@@ -1,0 +1,9 @@
+<div id="displayContainer" [class]="index !== 0 ? 'subscriptionMargin': ''">
+	<div
+		id="subscriptionDisplay"
+		[class]="subscriptionLevel.toLowerCase()">
+		{{subscriptionLevel}}
+	</div>
+	<div id="nameDisplay">{{firstName}} {{lastName}}</div>
+	<div id="dateDisplay">{{dateJoined}}</div>
+</div>
