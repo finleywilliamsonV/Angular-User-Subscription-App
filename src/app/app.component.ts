@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
      */
     public ngOnInit() {
         this.subscriptionLevels = ['Basic', 'Advanced', 'Pro']
-        this.showPassword = true
+        this.showPassword = false
     }
 
     /**

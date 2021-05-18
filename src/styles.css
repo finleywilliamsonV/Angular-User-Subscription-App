@@ -8,14 +8,10 @@
     outline: none !important;
 }
 
-#passwordRequirements > li {
-    list-style-type: none;
-}
-
-.passwordError {
-    color: red;
-}
-
-.passwordSuccess {
+.green {
     color: green
+}
+
+.red {
+    color: red
 }
